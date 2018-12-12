@@ -1,0 +1,15 @@
+debian/tmp/usr/bin/libtoolize
+debian/tmp/usr/share/libtool/build-aux/compile
+debian/tmp/usr/share/libtool/build-aux/config.guess
+debian/tmp/usr/share/libtool/build-aux/config.sub
+debian/tmp/usr/share/libtool/build-aux/depcomp
+debian/tmp/usr/share/libtool/build-aux/install-sh
+debian/tmp/usr/share/libtool/build-aux/ltmain.sh
+debian/tmp/usr/share/libtool/build-aux/missing
+debian/tmp/usr/share/aclocal/ltargz.m4
+debian/tmp/usr/share/aclocal/ltversion.m4
+debian/tmp/usr/share/aclocal/lt~obsolete.m4
+debian/tmp/usr/share/aclocal/libtool.m4
+debian/tmp/usr/share/aclocal/ltoptions.m4
+debian/tmp/usr/share/aclocal/ltsugar.m4
+debian/tmp/usr/share/man/man1/libtoolize.1

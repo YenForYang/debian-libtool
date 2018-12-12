@@ -1,0 +1,543 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck
+dpkg-buildpackage: info: source package libtool
+dpkg-buildpackage: info: source version 2.4.6-6
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Alastair McKinstry <mckinstry@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp config-stamp
+dh_clean
+[ ! -f Makefile ] || /usr/bin/make -k distclean
+rm -f INSTALL build-aux/compile build-aux/config.guess build-aux/config.sub
+rm -f build-aux/texinfo.tex build-aux/missing build-aux/install-sh
+rm -f build-aux/mdate-sh build-aux/depcomp README-release doc/libtool.info-2
+rm -f .version .version~
+rm -f doc/libtool.1 doc/libtool.info doc/libtool.info-1 doc/libtool.info-2 doc/libtoolize.1
+rm -f build-aux/ltmain.sh
+rm -f Makefile.in configure libltdl/Makefile.in libltdl/configure
+rm -rf autom4te.cache
+rm -f build-aux/gnupload config-h.in m4/gnulib-cache.m4 m4/gnulib-comp.m4
+rm -f build-aux/update-copyright m4/gnulib-tool.m4 build-aux/useless-if-before-free
+rm -f build-aux/announce-gen build-aux/gendocs.sh build-aux/vc-list-files
+rm -f build-aux/do-release-commit-and-tag build-aux/gnu-web-doc-update 
+rm -f m4/gnulib-common.m4 m4/00gnulib.m4 maint.mk doc/fdl.texi
+rm -f doc/gendocs_template GNUmakefile
+# Undo the version change if there is any.
+sed -i -e "s/\$scriptversion.*/\$scriptversion/" libtoolize.in
+sed -i -e "s/\$scriptversion.*/\$scriptversion/" build-aux/ltmain.in
+sed -i -e 's/^VERSION.*/VERSION=@VERSION@/' build-aux/ltmain.in
+ debian/rules binary
+dh_testdir
+sed -i -e "s/\$scriptversion.*/\$scriptversion Debian-2.4.6-6/" libtoolize.in
+sed -i -e "s/\$scriptversion.*/\$scriptversion Debian-2.4.6-6/" build-aux/ltmain.in
+sed -i -e 's/^VERSION.*/VERSION="@VERSION@ Debian-2.4.6-6"/' build-aux/ltmain.in
+touch README-release
+./bootstrap --force --no-git --skip-po --gnulib-srcdir=/usr/share/gnulib/ --copy
+bootstrap: warning: No 'git' found; imported gnulib modules may be outdated.
+bootstrap: running: /usr/share/gnulib//gnulib-tool --no-changelog --avoid=dummy --libtool --macro-prefix=GL --aux-dir=build-aux --m4-base=m4 --local-dir=gl --import announce-gen bootstrap...
+gnulib-tool: warning: module bootstrap doesn't exist
+gnulib-tool: warning: module extract-trace doesn't exist
+gnulib-tool: warning: module inline-source doesn't exist
+gnulib-tool: warning: module options-parser doesn't exist
+Module list with included dependencies (indented):
+  announce-gen
+  do-release-commit-and-tag
+  gendocs
+  gnu-web-doc-update
+    gnumakefile
+  gnupload
+  maintainer-makefile
+  readme-release
+  update-copyright
+    useless-if-before-free
+    vc-list-files
+gnulib-tool: warning: module bootstrap doesn't exist
+gnulib-tool: warning: module extract-trace doesn't exist
+gnulib-tool: warning: module inline-source doesn't exist
+gnulib-tool: warning: module options-parser doesn't exist
+File list:
+  build-aux/announce-gen
+  build-aux/do-release-commit-and-tag
+  build-aux/gendocs.sh
+  build-aux/gnu-web-doc-update
+  build-aux/gnupload
+  build-aux/update-copyright
+  build-aux/useless-if-before-free
+  build-aux/vc-list-files
+  doc/gendocs_template
+  m4/00gnulib.m4
+  m4/gnulib-common.m4
+  top/GNUmakefile
+  top/README-release
+  top/maint.mk
+Creating directory ./lib
+Copying file GNUmakefile
+Replacing file README-release (non-gnulib code backed up in README-release~) !!
+Copying file build-aux/announce-gen
+Copying file build-aux/do-release-commit-and-tag
+Copying file build-aux/gendocs.sh
+Copying file build-aux/gnu-web-doc-update
+Copying file build-aux/gnupload
+Copying file build-aux/update-copyright
+Copying file build-aux/useless-if-before-free
+Copying file build-aux/vc-list-files
+Copying file doc/gendocs_template
+Copying file m4/00gnulib.m4
+Copying file m4/gnulib-common.m4
+Copying file m4/gnulib-tool.m4
+Copying file maint.mk
+Creating lib/Makefile.am
+Creating m4/gnulib-cache.m4
+Creating m4/gnulib-comp.m4
+Finished.
+
+You may need to add #include directives for the following .h files.
+
+Don't forget to
+  - add "lib/Makefile" to AC_CONFIG_FILES in ./configure.ac,
+  - mention "lib" in SUBDIRS in Makefile.am,
+  - mention "-I m4" in ACLOCAL_AMFLAGS in Makefile.am,
+  - mention "m4/gnulib-cache.m4" in EXTRA_DIST in Makefile.am,
+  - invoke GL_EARLY in ./configure.ac, right after AC_PROG_CC,
+  - invoke GL_INIT in ./configure.ac.
+Copying file compile
+Copying file install-sh
+Copying file mdate-sh
+Copying file texinfo.tex
+Copying file depcomp
+Copying file config.guess
+Copying file config.sub
+Copying file INSTALL
+Copying file fdl.texi
+bootstrap: running: make bootstrap-deps AM_DEFAULT_VERBOSITY=0 PACKAGE='libtool' PACKAGE_BUGREPORT='bug-libtool@gnu.org' PACKAGE_NAME='GNU Libtool' PACKAGE_URL='http://www.gnu.org/s/libtool/'...
+make[1]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+  GEN      libltdl/Makefile.am
+  GEN      build-aux/ltmain.sh
+  GEN      m4/ltversion.m4
+make[1]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+bootstrap: running: autoreconf --force --install
+configure.ac:98: installing 'build-aux/missing'
+bootstrap: running: autoreconf --force --install libltdl
+bootstrap: warning: Please add bootstrap to your gnulib_modules list in
+bootstrap:          'bootstrap.conf', so that I can tell you when there are
+bootstrap:          updates available.
+bootstrap: Done.  Now you can run './configure'.
+CONFIG_SHELL=/bin/bash /bin/bash ./configure \
+	--prefix=/usr \
+	--libdir=\${prefix}/lib/x86_64-linux-gnu \
+	--build=x86_64-linux-gnu \
+	CFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe" CPPFLAGS="-Wdate-time -D_FORTIFY_SOURCE=2" CXXFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe" FCFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=. -fstack-protector-strong" FFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=. -fstack-protector-strong" GCJFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=. -fstack-protector-strong" LDFLAGS="-Wl,-z,relro -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--relax,--stats" OBJCFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=. -fstack-protector-strong -Wformat -Werror=format-security" OBJCXXFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=. -fstack-protector-strong -Wformat -Werror=format-security" 
+## ------------------------- ##
+## Configuring libtool 2.4.6 ##
+## ------------------------- ##
+
+checking for GNU M4 that supports accurate traces... /usr/bin/m4
+checking whether /usr/bin/m4 accepts --gnu... yes
+checking how m4 supports trace files... --debugfile
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+configure: autobuild project... GNU Libtool
+configure: autobuild revision... 2.4.6
+configure: autobuild hostname... server
+configure: autobuild mode... default
+configure: autobuild timestamp... 20181201T030949Z
+checking for gcc... icc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc accepts -g... yes
+checking for icc option to accept ISO C89... none needed
+checking whether icc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of icc... gcc3
+checking how to run the C preprocessor... icc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for Minix Amsterdam compiler... no
+checking for ranlib... ranlib
+checking how to run the C preprocessor... icc -E
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for fgrep... /bin/grep -F
+checking for ld used by icc... xild
+checking if the linker (xild) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for xild option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... (cached) ranlib
+checking command to parse /usr/bin/nm -B output from icc object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if icc supports -fno-rtti -fno-exceptions... yes
+checking for icc option to produce PIC... -fPIC -DPIC
+checking if icc PIC flag -fPIC -DPIC works... yes
+checking if icc static flag -static works... no
+checking if icc supports -c -o file.o... yes
+checking if icc supports -c -o file.o... (cached) yes
+checking whether the icc linker (xild -m elf_x86_64) supports shared libraries... xild: warning #10013: no objects specified for multi-file optimization
+xild: executing 'ld'
+yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for shl_load... no
+checking for shl_load in -ldld... no
+checking for dlopen... yes
+checking whether a program can dlopen itself... yes
+checking whether a statically linked program can dlopen itself... yes
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking what extension is used for runtime loadable modules... .so
+checking what variable specifies run-time module search path... LD_LIBRARY_PATH
+checking for the default library search path... /lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /opt/intel/lib/intel64 /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu 
+checking for library containing dlopen... none required
+checking for dlerror... yes
+checking for shl_load... (cached) no
+checking for shl_load in -ldld... (cached) no
+checking for dld_link in -ldld... no
+checking for _ prefix in compiled symbols... no
+checking whether deplibs are loaded by dlopen... yes
+checking for argz.h... yes
+checking for error_t... yes
+checking for argz_add... yes
+checking for argz_append... yes
+checking for argz_count... yes
+checking for argz_create_sep... yes
+checking for argz_insert... yes
+checking for argz_next... yes
+checking for argz_stringify... yes
+checking if argz actually works... yes
+checking whether libtool supports -dlopen/-dlpreopen... yes
+checking for unistd.h... (cached) yes
+checking for dl.h... no
+checking for sys/dl.h... no
+checking for dld.h... no
+checking for mach-o/dyld.h... no
+checking for dirent.h... yes
+checking for closedir... yes
+checking for opendir... yes
+checking for readdir... yes
+checking for strlcat... no
+checking for strlcpy... no
+checking whether we are using the GNU C++ compiler... yes
+checking whether icpc accepts -g... yes
+checking dependency style of icpc... gcc3
+checking how to run the C++ preprocessor... icpc -E
+checking for ld used by icpc... xild -m elf_x86_64
+checking if the linker (xild -m elf_x86_64) is GNU ld... yes
+checking whether the icpc linker (xild -m elf_x86_64) supports shared libraries... yes
+checking for icpc option to produce PIC... -fPIC -DPIC
+checking if icpc PIC flag -fPIC -DPIC works... yes
+checking if icpc static flag -static works... no
+checking if icpc supports -c -o file.o... yes
+checking if icpc supports -c -o file.o... (cached) yes
+checking whether the icpc linker (xild -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for g77... no
+checking for xlf... no
+checking for f77... f77
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether f77 accepts -g... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for f77 option to produce PIC... -fPIC
+checking if f77 PIC flag -fPIC works... yes
+checking if f77 static flag -static works... no
+checking if f77 supports -c -o file.o... yes
+checking if f77 supports -c -o file.o... (cached) yes
+checking whether the f77 linker (xild -m elf_x86_64) supports shared libraries... xild: warning #10013: no objects specified for multi-file optimization
+xild: executing 'ld'
+yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for gfortran... gfortran
+checking whether we are using the GNU Fortran compiler... yes
+checking whether gfortran accepts -g... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for gfortran option to produce PIC... -fPIC
+checking if gfortran PIC flag -fPIC works... yes
+checking if gfortran static flag -static works... no
+checking if gfortran supports -c -o file.o... yes
+checking if gfortran supports -c -o file.o... (cached) yes
+checking whether the gfortran linker (xild -m elf_x86_64) supports shared libraries... xild: warning #10013: no objects specified for multi-file optimization
+xild: executing 'ld'
+yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for gccgo... no
+checking for gcj... no
+checking for windres... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating config.h
+config.status: executing tests/atconfig commands
+config.status: executing depfiles commands
+config.status: executing libtool commands
+touch config-stamp
+dh_testdir
+/usr/bin/make
+make[1]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+  GEN      libtoolize
+/usr/bin/make  all-recursive
+make[2]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+Making all in .
+make[3]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[4]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[4]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+  MAKEINFO doc/libtool.info
+./doc/libtool.texi:1325: warning: @pxref node name should not contain `.'
+  CC       libltdl/loaders/libltdl_la-preopen.lo
+  CC       libltdl/libltdl_la-lt__alloc.lo
+  CC       libltdl/libltdl_la-lt_dlloader.lo
+  CC       libltdl/libltdl_la-lt_error.lo
+  CC       libltdl/libltdl_la-ltdl.lo
+  CC       libltdl/libltdl_la-slist.lo
+  CC       libltdl/loaders/dlopen.lo
+  CCLD     libltdl/dlopen.la
+xiar: executing 'ar'
+ar: `u' modifier ignored since `D' is the default (see `U')
+  CC       libltdl/lt__strl.lo
+  CCLD     libltdl/libltdl.la
+xiar: executing 'ar'
+xiar: executing 'ar'
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.192000
+xiar: executing 'ar'
+xiar: executing 'ar'
+xiar: executing 'ar'
+ar: `u' modifier ignored since `D' is the default (see `U')
+  GEN      doc/libtool.1
+  GEN      doc/libtoolize.1
+  GEN      libltdl/stamp-mk
+make[3]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[2]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[1]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+echo '# ### BEGIN LIBTOOL TAG CONFIG: BINCC' >> libtool
+sed -n -e '/^# ### BEGIN LIBTOOL CONFIG/,/^# ### END LIBTOOL CONFIG/p' < libtool \
+	| grep -B 2 -A 1 -e '^LTCC=' -e '^CC=' \
+	| sed '/^--/d;s/gcc/cc/g' >> libtool
+echo '# ### END LIBTOOL TAG CONFIG: BINCC' >> libtool
+echo >> libtool
+sed -n -e '/^# ### BEGIN LIBTOOL TAG CONFIG: CXX$/,/^# ### END LIBTOOL TAG CONFIG: CXX$/p' < libtool \
+	| sed -e 's/CONFIG: CXX/CONFIG: BINCXX/g' \
+	      -e 's/g++/c++/g' >> libtool
+echo >> libtool
+sed -e 's/^\(available_tags\)=\"\(.*\)\"/\1=\"\2 BINCC BINCXX\"/' \
+	< libtool > libtool.tags
+mv libtool.tags libtool
+sed -e 's/^\(predep_objects\)=.*/\1=""/' \
+    -e 's/^\(postdep_objects\)=.*/\1=""/' \
+    -e 's/^\(compiler_lib_search_path\)=.*/\1=""/' \
+    -e 's:^\(sys_lib_search_path_spec\)=.*:\1="/lib/ /usr/lib/ /usr/X11R6/lib/ /usr/local/lib/":' \
+    -e 's/^\(archive_cmds=\".*\) -nostdlib /\1 /' \
+    -e 's/^\(archive_expsym_cmds=\".*\) -nostdlib /\1 /' \
+    < libtool > libtool.gcc-indep
+mv libtool.gcc-indep libtool
+chmod 755 libtool
+cd doc && makeinfo libtool.texi
+libtool.texi:1325: warning: @pxref node name should not contain `.'
+cd doc && makeinfo --html --no-split libtool.texi
+touch build-stamp
+dh_testdir
+dh_testroot
+dh_prep
+dh_installdirs
+/usr/bin/make prefix=/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr install
+make[1]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+/usr/bin/make  install-recursive
+make[2]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+Making install in .
+make[3]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[4]: Entering directory '/home/richard/debs/libtool/libtool-2.4.6'
+ /bin/mkdir -p '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/bin'
+ /usr/bin/install -c libtool '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/bin'
+ /bin/mkdir -p '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu'
+ /bin/bash ./libtool   --mode=install /usr/bin/install -c   libltdl/libltdl.la '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu'
+libtool: install: /usr/bin/install -c libltdl/.libs/libltdl.so.7.3.1 /home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu/libltdl.so.7.3.1
+libtool: install: (cd /home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu && { ln -s -f libltdl.so.7.3.1 libltdl.so.7 || { rm -f libltdl.so.7 && ln -s libltdl.so.7.3.1 libltdl.so.7; }; })
+libtool: install: (cd /home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu && { ln -s -f libltdl.so.7.3.1 libltdl.so || { rm -f libltdl.so && ln -s libltdl.so.7.3.1 libltdl.so; }; })
+libtool: install: /usr/bin/install -c libltdl/.libs/libltdl.lai /home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu/libltdl.la
+libtool: install: /usr/bin/install -c libltdl/.libs/libltdl.a /home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu/libltdl.a
+libtool: install: chmod 644 /home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu/libltdl.a
+libtool: install: ranlib /home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/lib/x86_64-linux-gnu/libltdl.a
+libtool: warning: remember to run 'libtool --finish /usr/lib/x86_64-linux-gnu'
+ GREP='/bin/grep' SED='/bin/sed' './build-aux/inline-source' libtoolize > '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/bin/libtoolize'
+rm -rf '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool'/*
+ /usr/bin/install -c -m 644 './m4/libtool.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/aclocal/libtool.m4'
+ /usr/bin/install -c -m 644 './m4/ltargz.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/aclocal/ltargz.m4'
+ /usr/bin/install -c -m 644 './m4/ltdl.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/aclocal/ltdl.m4'
+ /usr/bin/install -c -m 644 './m4/ltoptions.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/aclocal/ltoptions.m4'
+ /usr/bin/install -c -m 644 './m4/ltsugar.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/aclocal/ltsugar.m4'
+ /usr/bin/install -c -m 644 './m4/ltversion.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/aclocal/ltversion.m4'
+ /usr/bin/install -c -m 644 './m4/lt~obsolete.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/aclocal/lt~obsolete.m4'
+ /usr/bin/install -c './build-aux/compile' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/build-aux/compile'
+ /usr/bin/install -c './build-aux/config.guess' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/build-aux/config.guess'
+ /usr/bin/install -c './build-aux/config.sub' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/build-aux/config.sub'
+ /usr/bin/install -c './build-aux/depcomp' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/build-aux/depcomp'
+ /usr/bin/install -c './build-aux/install-sh' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/build-aux/install-sh'
+ /usr/bin/install -c './build-aux/missing' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/build-aux/missing'
+ /usr/bin/install -c -m 644 './build-aux/ltmain.sh' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/build-aux/ltmain.sh'
+ /usr/bin/install -c -m 644 './libltdl/COPYING.LIB' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/COPYING.LIB'
+ /usr/bin/install -c -m 644 './libltdl/Makefile.am' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/Makefile.am'
+ /usr/bin/install -c -m 644 './libltdl/README' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/README'
+ /usr/bin/install -c -m 644 './libltdl/configure.ac' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/configure.ac'
+ /usr/bin/install -c -m 644 './libltdl/aclocal.m4' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/aclocal.m4'
+ /usr/bin/install -c -m 644 './libltdl/Makefile.in' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/Makefile.in'
+ /usr/bin/install -c -m 644 './libltdl/config-h.in' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/config-h.in'
+ /usr/bin/install -c -m 644 './libltdl/configure' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/configure'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt__alloc.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt__alloc.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt__argz_.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt__argz_.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt__dirent.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt__dirent.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt__glibc.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt__glibc.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt__private.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt__private.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt__strl.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt__strl.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt_dlloader.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt_dlloader.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt_error.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt_error.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/lt_system.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/lt_system.h'
+ /usr/bin/install -c -m 644 './libltdl/libltdl/slist.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/libltdl/slist.h'
+ /usr/bin/install -c -m 644 './libltdl/loaders/dld_link.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/loaders/dld_link.c'
+ /usr/bin/install -c -m 644 './libltdl/loaders/dlopen.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/loaders/dlopen.c'
+ /usr/bin/install -c -m 644 './libltdl/loaders/dyld.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/loaders/dyld.c'
+ /usr/bin/install -c -m 644 './libltdl/loaders/load_add_on.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/loaders/load_add_on.c'
+ /usr/bin/install -c -m 644 './libltdl/loaders/loadlibrary.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/loaders/loadlibrary.c'
+ /usr/bin/install -c -m 644 './libltdl/loaders/preopen.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/loaders/preopen.c'
+ /usr/bin/install -c -m 644 './libltdl/loaders/shl_load.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/loaders/shl_load.c'
+ /usr/bin/install -c -m 644 './libltdl/lt__alloc.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/lt__alloc.c'
+ /usr/bin/install -c -m 644 './libltdl/lt__argz.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/lt__argz.c'
+ /usr/bin/install -c -m 644 './libltdl/lt__dirent.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/lt__dirent.c'
+ /usr/bin/install -c -m 644 './libltdl/lt__strl.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/lt__strl.c'
+ /usr/bin/install -c -m 644 './libltdl/lt_dlloader.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/lt_dlloader.c'
+ /usr/bin/install -c -m 644 './libltdl/lt_error.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/lt_error.c'
+ /usr/bin/install -c -m 644 './libltdl/ltdl.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/ltdl.c'
+ /usr/bin/install -c -m 644 './libltdl/ltdl.h' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/ltdl.h'
+ /usr/bin/install -c -m 644 './libltdl/ltdl.mk' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/ltdl.mk'
+ /usr/bin/install -c -m 644 './libltdl/slist.c' '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/slist.c'
+chmod a+x '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/libtool/configure'
+ /bin/mkdir -p '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/include'
+ /usr/bin/install -c -m 644 libltdl/ltdl.h '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/include'
+ /bin/mkdir -p '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/info'
+ /usr/bin/install -c -m 644 ./doc/libtool.info ./doc/libtool.info-1 ./doc/libtool.info-2 '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/info'
+ /bin/mkdir -p '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/include/libltdl'
+ /usr/bin/install -c -m 644 libltdl/libltdl/lt_system.h libltdl/libltdl/lt_error.h libltdl/libltdl/lt_dlloader.h '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/include/libltdl'
+ /bin/mkdir -p '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/man/man1'
+ /usr/bin/install -c -m 644 ./doc/libtool.1 ./doc/libtoolize.1 '/home/richard/debs/libtool/libtool-2.4.6/debian/tmp/usr/share/man/man1'
+make[4]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[3]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[2]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+make[1]: Leaving directory '/home/richard/debs/libtool/libtool-2.4.6'
+rm -f debian/tmp/usr/share/info/dir
+dh_install --fail-missing --sourcedir=debian/tmp
+dh_install: Please use dh_missing --list-missing/--fail-missing instead
+dh_install: This feature will be removed in compat 12.
+dh_testdir -i
+dh_testroot -i
+# Create symlinks to the one in autotools-dev
+rm -f debian/libtool/usr/share/libtool/build-aux/config.guess
+ln -s ../../misc/config.guess debian/libtool/usr/share/libtool/build-aux
+rm -f debian/libtool/usr/share/libtool/build-aux/config.sub
+ln -s ../../misc/config.sub debian/libtool/usr/share/libtool/build-aux
+dh_installdocs -i
+dh_installdocs: Cannot find (any matches for) "ChangeLog.*" (tried in .)
+
+dh_installinfo -plibtool-doc
+dh_installexamples -i
+dh_installchangelogs -i ChangeLog
+dh_link -i
+dh_lintian -i
+dh_compress -i
+dh_fixperms -i
+dh_installdeb -i
+dh_gencontrol -i
+dh_md5sums -i
+dh_builddeb -i
+dpkg-deb: building package 'libtool' in '../libtool_2.4.6-6_all.deb'.
+dpkg-deb: building package 'libtool-doc' in '../libtool-doc_2.4.6-6_all.deb'.
+dh_testdir -a
+dh_testroot -a
+dh_installdocs -plibtool-bin
+dh_installdocs -plibltdl7
+mkdir -p debian/libltdl-dev/usr/share/doc
+cd debian/libltdl-dev/usr/share/doc && ln -sf libltdl7 libltdl-dev
+dh_installchangelogs -plibtool-bin
+dh_installchangelogs -plibltdl7 ChangeLog
+dh_strip -a
+dh_lintian -a
+dh_link -a
+dh_compress -a
+dh_fixperms -a
+dh_makeshlibs -a -V
+dh_installdeb -a
+dh_shlibdeps -a
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libsvml.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libsvml.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libsvml.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libsvml.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libsvml.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libsvml.so'
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libltdl7/usr/lib/x86_64-linux-gnu/libltdl.so.7.3.1 was not linked against libpthread.so.0 (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libltdl7/usr/lib/x86_64-linux-gnu/libltdl.so.7.3.1 was not linked against libsvml.so (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libltdl7/usr/lib/x86_64-linux-gnu/libltdl.so.7.3.1 was not linked against libgcc_s.so.1 (it uses none of the library's symbols)
+rm -f debian/libltdl-dev.substvars
+echo 'automake=automake-1.16 ' > debian/libltdl-dev.substvars
+dh_gencontrol -a
+dh_md5sums -a
+dh_builddeb -a
+dpkg-deb: building package 'libtool-bin' in '../libtool-bin_2.4.6-6_amd64.deb'.
+dpkg-deb: building package 'libltdl7' in '../libltdl7_2.4.6-6_amd64.deb'.
+dpkg-deb: building package 'libltdl-dev' in '../libltdl-dev_2.4.6-6_amd64.deb'.
+dpkg-deb: building package 'libltdl7-dbgsym' in '../libltdl7-dbgsym_2.4.6-6_amd64.deb'.
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../libtool_2.4.6-6_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian libtool_2.4.6-6_amd64.changes ...
+W: libtool: script-not-executable usr/share/libtool/build-aux/ltmain.sh
+N: 1 tag overridden (1 info)
+Finished running lintian.

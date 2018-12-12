@@ -1,0 +1,7 @@
+libltdl-dev_2.4.6-6_amd64.deb libdevel optional
+libltdl7-dbgsym_2.4.6-6_amd64.deb debug optional automatic=yes
+libltdl7_2.4.6-6_amd64.deb libs optional
+libtool-bin_2.4.6-6_amd64.deb devel optional
+libtool-doc_2.4.6-6_all.deb doc optional
+libtool_2.4.6-6_all.deb devel optional
+libtool_2.4.6-6_amd64.buildinfo devel optional

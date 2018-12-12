@@ -1,0 +1,49 @@
+Format: 1.8
+Date: Wed, 10 Oct 2018 10:49:43 +0100
+Source: libtool
+Binary: libtool libtool-bin libtool-doc libltdl7 libltdl-dev
+Built-For-Profiles: nobiarch nocheck
+Architecture: amd64 all
+Version: 2.4.6-6
+Distribution: unstable
+Urgency: medium
+Maintainer: Alastair McKinstry <mckinstry@debian.org>
+Changed-By: Alastair McKinstry <mckinstry@debian.org>
+Description:
+ libltdl-dev - System independent dlopen wrapper for GNU libtool
+ libltdl7   - System independent dlopen wrapper for GNU libtool
+ libtool    - Generic library support script
+ libtool-bin - Generic library support script (libtool binary)
+ libtool-doc - Generic library support script
+Closes: 900276 910076
+Changes:
+ libtool (2.4.6-6) unstable; urgency=medium
+ .
+   * Undo broken patch inclusion. Closes: #910076
+   * Disable refactor patch 0012-funclib-refactor-quoting-methods-a-bit.patch
+     that breaks pkgs  on AIX (no bash optimization). Closes: #900276
+   * Add build-dep on libltdl-dev for test 102
+Checksums-Sha1:
+ 422732a9d5e1b7ce4970a38b6736b1e8eab20c40 353168 libltdl-dev_2.4.6-6_amd64.deb
+ 95479e1cf1f7a825cca0c41a786d80bc5ebcd65c 30720 libltdl7-dbgsym_2.4.6-6_amd64.deb
+ 12fd5b3de9ce411591b30ff8119a648afce971cb 395932 libltdl7_2.4.6-6_amd64.deb
+ 8956f38a8ebc6307a9e7ab07e82e0aa8de4686a4 431532 libtool-bin_2.4.6-6_amd64.deb
+ c8c1d8d621ffe66af0711211a35a8b4f52ebf1c9 582128 libtool-doc_2.4.6-6_all.deb
+ 5db05a159f053c1c3b676bc8296a8016ff42e639 546840 libtool_2.4.6-6_all.deb
+ eca61d36a956b28eb20dff07d12a385fb963d2f7 6916 libtool_2.4.6-6_amd64.buildinfo
+Checksums-Sha256:
+ 442907dd8a043bd42a8328fb75833579d4f43101421d96656c7852cfbb797dba 353168 libltdl-dev_2.4.6-6_amd64.deb
+ 5180e2bddbfe9327b177400528b7d54131305a7ea301464cc40532817170b9bd 30720 libltdl7-dbgsym_2.4.6-6_amd64.deb
+ 73e1e80764361dfa9f793f198cab8dfddeb4ba7f322d7e9352c857dcf1df3180 395932 libltdl7_2.4.6-6_amd64.deb
+ 6a3bb81a20455b5edda1da17c1ffb41e38e8c279fa85d739fced003ce36733fa 431532 libtool-bin_2.4.6-6_amd64.deb
+ c759d3eb77874162bd56ee3fb21488b9ef835a23b3d13d8cede729d04bcac80e 582128 libtool-doc_2.4.6-6_all.deb
+ 283d5574c6b09e8e014a98e7c35cbd9def8d27791a40aad4bb13f48164998a6f 546840 libtool_2.4.6-6_all.deb
+ 790e4786a57ee897bc81b16399f188e4a564b8826f332b80c6deba655f8a961f 6916 libtool_2.4.6-6_amd64.buildinfo
+Files:
+ 6a56635286fb8f95e409bbc3fa0f9ab4 353168 libdevel optional libltdl-dev_2.4.6-6_amd64.deb
+ bb8c80eb4f2f5d2e1e29a3495666a05d 30720 debug optional libltdl7-dbgsym_2.4.6-6_amd64.deb
+ 963e36a1756d8f8bb32cb034a01b41b7 395932 libs optional libltdl7_2.4.6-6_amd64.deb
+ 69cf938555e076b8a93220490903de2f 431532 devel optional libtool-bin_2.4.6-6_amd64.deb
+ 4beb95953ba386ce1c5f07dfdf3b8798 582128 doc optional libtool-doc_2.4.6-6_all.deb
+ 20f477be9a78e5f24a0e6766d37aedfa 546840 devel optional libtool_2.4.6-6_all.deb
+ 46cdbfdfb03f3366ef180fa62cae3c49 6916 devel optional libtool_2.4.6-6_amd64.buildinfo

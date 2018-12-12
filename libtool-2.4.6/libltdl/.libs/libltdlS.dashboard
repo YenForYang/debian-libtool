@@ -1,0 +1,12 @@
+{
+    "driver_name" : "icc",
+    "options" : [ "-march=native", "-parallel", "-inline-level=2", "-qemit-build-options", "-qemit-messages", "-multiple-processes=8", "-qoverride-limits", "-falign-loops", "-falign-functions", "-qopt-matmul", "-qopt-mem-layout-trans", "-fpermissive", "-ipo-jobs4", "-Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--relax,--stats", "-ffunction-sections", "-fdata-sections", "-diag-disable=10148,10006,10121,11021", "-par-schedule-auto", "-g", "-O2", "-fdebug-prefix-map=/home/richard/debs/libtool/libtool-2.4.6=.", "-fstack-protector-strong", "-Wformat", "-Werror=format-security", "-march=native", "-pipe", "-c", "-fno-builtin", "-fno-rtti", "-fno-exceptions", "-fPIC", "-DPIC" ],
+    "objects" : [
+        {
+            "object_name" : "libltdlS.o",
+            "source_name" : "libltdlS.c",
+            "start_time" : "2018-12-01T03:10:29Z",
+            "end_time" : "2018-12-01T03:10:29Z"
+        }
+    ]
+}

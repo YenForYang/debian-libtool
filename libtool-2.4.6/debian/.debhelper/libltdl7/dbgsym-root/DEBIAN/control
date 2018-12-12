@@ -1,0 +1,13 @@
+Package: libltdl7-dbgsym
+Source: libtool
+Version: 2.4.6-6
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Alastair McKinstry <mckinstry@debian.org>
+Installed-Size: 48
+Depends: libltdl7 (= 2.4.6-6)
+Section: debug
+Priority: optional
+Multi-Arch: same
+Description: debug symbols for libltdl7
+Build-Ids: 0ef2f40c35e390ace5e57bf347673cc59c0d62ec
